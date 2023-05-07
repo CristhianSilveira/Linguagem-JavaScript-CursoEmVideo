@@ -1,4 +1,89 @@
 CURSO EM VIDEO --- JavaScript ---
 
 
-1-
+1- Variáveis:
+    Como Criar variáveis: Ex: var nome
+    OBS: = sempre que tiver sinal de igual (=), você vai ler como "recebe"
+
+2- Identificadores:
+    * Não podem começar com números
+    * Podem começar com letras, $ ou _
+    * Pode usar acentuação
+    * Não pode conter espaços
+    * Não pode ser palavras reservadas
+    * Escolha nomes coerentes
+    * Maiúsculas e minúsculas fazem diferença
+
+3- Tipos de Dados:
+    3.1- Number: todos os números inteiros e reais. EX: 18, -12, 0.5, -15.9, etc.
+    3.2- String: É uma cadeia de caracteres. EX: "Google", 'Carlos', `JavaScript`.
+    3.3- Booleean: É um valor boleano, do tipo verdadeiro ou falso. EX: false e true.
+
+4- Comentário em JavaScript:
+    Usar //(comentário). EX: // Aqui vai seu comentário
+
+5- Conversões:
+    5.1- String P/ Número: Number.parseInt(n) (inteiros) e Number.parseFloat(n) (reais) ou Number(n) (reais e inteiros juntos)
+    5.2- Número P/ String: String(n) ou n.toString()
+
+6- Formatando Strings:
+    6.1 EX: var s = 'JavaScript'
+        'Eu estou aprendendo s' (não faz interpolação) >>Resultado = Eu estou aprendendo s
+        'Eu estou aprendendo' + s (usa concatenação) >>Resultado = Eu estou aprendendo JavaScript
+        `Eu estou aprendendo ${s}` (usa template string) >>Resultado = Eu estou aprendendo JavaScript
+    6.2- Atributos:
+        EX: var s = 'JavaScript'
+        s.length (quantos caracteres a string tem) >>Resultado = 10
+        s.toUpperCase() (tudo fica em maiúscula) >>Resultado = JAVASCRIPT
+        s.toLowerCase() (tudo fica em minúscula) >>Resultado = javascript
+
+7- Operadores:
+    7.1- Aritméticos:   Soma (+):  EX: 5+2 = 7
+                        Subtração (-):  EX: 5-2 = 3
+                        Multiplicação (*):  EX: 5*2 = 10
+                        Divisão (/):  EX: 5/2 = 2.5
+                        Resto Da Divisão (%):  EX: 5%2 = 1
+                        Potência (**):  EX: 5**2 = 25
+    
+    7.2- Auto atribuição:
+        Var n = 3
+        n = n+4  >>Resultado = 7
+        n = n-5  >>Resultado = 2
+        n = n*4  >>Resultado = 8
+        n = n/2  >>Resultado = 4
+        n = n**2  >>Resultado = 16
+        n = n%5  >>Resultado = 1
+        Simplificando:
+        n+= 4  >>Resultado = 7
+        n-= 5  >>Resultado = 2
+        n*= 4  >>Resultado = 8
+        n/= 2  >>Resultado = 4
+        n**= 2  >>Resultado = 16
+        n%=5  >>Resultado = 1
+
+    7.3- Ordem de Precedência dos Aritméticos:
+        1- (), 2- **, 3- * / %, 4- + -
+
+    7.4- Incremento e Decremento:
+        X++: EX: 5++ = 6
+        X--: EX: 5-- = 4
+
+    7.5- Operadores Relacionais:
+        Maior que (>):  EX: 5 > 2 = Verdadeiro
+        Menor que (<):  EX: 7 < 4 = Falso
+        Maior ou Igual a (>=):  EX: 8 >= 8 = Verdadeiro
+        Menor ou igual a (<=):  EX: 9 <= 7 = Falso
+        Igual (==):  EX: 5 == 5 = Verdadeiro
+        Diferente (!=):  EX: 4 != 4 = Falso
+
+    7.6- Operadores Lógicos:
+        Negação (!):
+        Conjunção [E] (&&): Para ser verdadeiro ou dois tem que serem verdadeiros
+        Disjunção [OU] (||): Para ser falso ou dois tem que serem falsos.
+
+    7.7- Ordem de Precedência:
+        1- Aritméticos, 2- Relacionais, 3- Lógicos
+
+    7.8- Operador Ternário: (teste) ? (true) : (false)
+        EX: média = 5.5
+        média > 7?"APROVADO":"REPROVADO"  >>Resultado: "REPROVADO"
