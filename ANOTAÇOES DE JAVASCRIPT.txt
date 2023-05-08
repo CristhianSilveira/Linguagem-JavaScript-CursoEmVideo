@@ -78,8 +78,8 @@ CURSO EM VIDEO --- JavaScript ---
 
     7.6- Operadores Lógicos:
         Negação (!):
-        Conjunção [E] (&&): Para ser verdadeiro ou dois tem que serem verdadeiros
-        Disjunção [OU] (||): Para ser falso ou dois tem que serem falsos.
+        Conjunção [E] (&&): Para ser verdadeiro ou dois tem que ser verdadeiros
+        Disjunção [OU] (||): Para ser falso ou dois tem que ser falsos.
 
     7.7- Ordem de Precedência:
         1- Aritméticos, 2- Relacionais, 3- Lógicos
@@ -87,3 +87,18 @@ CURSO EM VIDEO --- JavaScript ---
     7.8- Operador Ternário: (teste) ? (true) : (false)
         EX: média = 5.5
         média > 7?"APROVADO":"REPROVADO"  >>Resultado: "REPROVADO"
+
+8- DOM (Document Object Model):
+    8.1- Selecionando por:
+        8.1.1- Marca: getElementsByTagName()
+        8.1.2- ID: getElementById()
+        8.1.3- Nome: getElementsByName()
+        8.1.4- Classe: getElementsByClassName()
+        8.1.5- Seletor: querySelector()
+    8.2- Eventos DOM:
+        mouseenter (quando o mouse entrar)
+        mousemove (quando mover o mouse)
+        moysedown (quando segurar o botão de click do mouse)
+        mouseup (quando soltar o botão de click do mouse)
+        click (quando clicar rapidamente com o mouse)
+        mouseout (quando mover o mouse)
