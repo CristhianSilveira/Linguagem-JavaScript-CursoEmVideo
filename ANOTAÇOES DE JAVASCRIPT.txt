@@ -102,3 +102,40 @@ CURSO EM VIDEO --- JavaScript ---
         mouseup (quando soltar o botão de click do mouse)
         click (quando clicar rapidamente com o mouse)
         mouseout (quando mover o mouse)
+
+9- Condições: OBS: if(se) e else(senão)
+    9.1- Condição Simples:
+        if (condição){
+            [executa, se a condição for verdadeira]
+        }
+    9.2- Condição Composta:
+        if (condição){
+            [executa, se a condição for verdadeira]
+        } else{
+            [executa, se a condição for falsa]
+        }
+    9.3- Condição Aninhada: Condição dentro de outra.
+        if (condição1){
+            [executa, se a condição1 for verdadeira]
+        } else {
+            if (condição2) {
+                [executa, se a condição1 for falsa e a condição2 for verdadeira]
+            } else {
+            [executa, se a condição2 for falsa]
+            }
+        }
+    9.4- Condição Múltipla:
+        switch (expressão){
+            case valor1:
+                [executa se a expressão ter valor1]
+                break
+            case valor2:
+                [executa se a expressão ter valor2]
+                break
+            case valor3:
+                [executa se a expressão ter valor3]
+                break
+            default:
+                [executa se a expressão não ter nenhum dos valores anteriores]
+                break
+        }
