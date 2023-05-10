@@ -139,3 +139,39 @@ CURSO EM VIDEO --- JavaScript ---
                 [executa se a expressão não ter nenhum dos valores anteriores]
                 break
         }
+
+10- Repetições: OBS: while(enquanto), do(faça), for(para)
+    10.1- Teste lógico no início:
+        while (condição){
+            [repete, até a condição for falsa]
+        }
+
+    10.2- Teste lógico no final:
+        do{
+            [repete, até a condição for falsa]
+        } while(condição)
+
+    10.3- Variável de Controle:
+        for(inicio;teste;incremento) {
+            [repete, até o teste for falso]
+        }
+
+    10.4- Exemplos:
+        10.4.1- Usando While:
+                var c=1
+                while (c<=10){
+                    console.log(`Passo ${c}`)
+                    c++
+                }
+
+        10.4.2- Usando do:
+                var c=1
+                do{
+                    console.log(`Passo ${c}`)
+                    c++
+                } while (c<=10)
+
+        10.4.2- Usando For:
+                for (var c = 1;c <= 10;c++){
+                    console.log(`Passo ${c}`)
+                }
