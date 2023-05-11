@@ -175,3 +175,32 @@ CURSO EM VIDEO --- JavaScript ---
                 for (var c = 1;c <= 10;c++){
                     console.log(`Passo ${c}`)
                 }
+
+11- Variáveis Compostas: É uma variável com vários elementos com identificação.
+    EX: var num = [5,8,4] >>Explicando: ([5] está na posição 0, [8] está na posição 1, [4] está na posição 2)
+
+12- Funções: São ações executadas assim que são chamadas, pode receber parâmetros e retornar um resultado.   
+        function ação(parâmetro){
+        }
+    EX: function parImpar(n){
+            if (n%2 == 0){
+                return 'Par!'
+            } else {
+                return 'Ímpar!'
+            }
+        }
+
+13- O que estudar?
+        Functions:
+        Arrow Functions 
+        Callbacks
+        Funções Anônimas
+        iife
+        JavaScript Funcional
+        Objetos (orientação a objetos)
+        Modularização
+        RegEx (Regular Expressions)
+        JSON
+        AJAX
+        NodeJS
+        bibliotecas e frameworks(Jquery, vue,js, angular[...])
