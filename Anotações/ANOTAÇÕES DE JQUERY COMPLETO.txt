@@ -1,0 +1,173 @@
+                     ------ JQuery Completo ------
+
+
+        Olá, criei esse arquivo com as principais aplicações do JQuery explicadas e com exemplos.
+
+                OBS: os exemplos não estão formatados para não ocupar muitas linhas do arquivo.
+
+
+1- Introdução: jQuery é uma biblioteca JavaScript. jQuery simplifica muito a programação JavaScript. jQuery é uma biblioteca JavaScript leve, "escreva menos, faça mais".
+    1.1- Adicionando jQuery às suas páginas da Web: Existem várias maneiras de começar a usar jQuery em seu site. Você pode: Baixar a biblioteca jQuery em jQuery.com ou Incluir jQuery de um CDN, como o Google.
+    
+    1.2- jQuery CDN: Se você não deseja baixar e hospedar o jQuery sozinho, pode incluí-lo em uma CDN (Content Delivery Network). O Google é um exemplo de alguém que hospeda jQuery:  <head>   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>   </head>
+    
+    1.3- Sintaxe jQuery: A sintaxe jQuery é feita sob medida para selecionar elementos HTML e executar alguma ação no(s) elemento(s). A sintaxe básica é: $(seletor).ação ()  >>Explicando: Um sinal $ para definir jQuery, O (seletor) para "consultar" elementos HTML e Uma ação jQuery () a ser executada no(s) elemento(s).   EX: $("p").hide() [esconde todos os elementos <p>.]
+
+    1.4- O Evento de Documento Pronto: Isso evita que qualquer código jQuery seja executado antes que o documento termine de carregar. É uma boa prática esperar que o documento esteja totalmente carregado e pronto antes de trabalhar com ele. Isso também permite que você tenha seu código JavaScript antes do corpo do seu documento, na seção head.   EX: $(document).ready(function(){  //Métodos JQuery aqui  });
+
+2- Fundamentos:
+    2.1- Seletores: Os seletores jQuery permitem que você selecione e manipule elementos HTML. Os seletores jQuery são usados ​​para "encontrar" (ou selecionar) elementos HTML com base em seu nome, id, classes, tipos, atributos, valores de atributos e muito mais. É baseado nos seletores de CSS existentes e, além disso, possui alguns seletores personalizados. Todos os seletores em jQuery começam com o cifrão e parênteses: $().
+
+        2.1.1- Seletor de elementos: O seletor de elemento jQuery seleciona elementos com base no nome do elemento.   EX: $("p")
+
+        2.1.2- O Seletor #id: O seletor jQuery usa o atributo id de uma tag HTML para localizar o elemento específico. Um id deve ser único dentro de uma página, então você deve usar o seletor id quando quiser encontrar um único elemento.   EX: $("#test")
+
+        2.1.3- O Seletor .class: O seletor jQuery .class encontra elementos com uma classe específica.   EX: $(".test")
+
+    2.2- Eventos JQuery: Todas as diferentes ações dos visitantes às quais uma página da Web pode responder são chamadas de eventos. Um evento representa o momento preciso em que algo acontece.
+        2.1- Sintaxe jQuery para métodos de evento: No jQuery, a maioria dos eventos DOM tem um método jQuery equivalente.   EX: $("p").click(function(){  //Ações aqui  });
+
+        2.2- Métodos de evento jQuery comumente usados:
+            2.2.1- Clique: O método click( ) anexa uma função de manipulador de eventos a um elemento HTML. A função é executada quando o usuário clica no elemento HTML.   EX: $("p").click(function(){  $(this).hide();  });  >>Explicando: Quando um evento de clique é acionado em um elemento <p>, ele oculta o conteúdo do elemento <p>
+
+            2.2.2- Double-Click: O método dblclick() anexa uma função de manipulador de eventos a um elemento HTML. A função é executada quando o usuário clica duas vezes no elemento HTML.   EX: $("p").dblclick(function(){  $(this).hide();  });
+
+            2.2.3- Ponteiro do mouse entra: O método mouseenter() anexa uma função de manipulador de eventos a um elemento HTML. A função é executada quando o ponteiro do mouse entra no elemento HTML.   EX: $("#p1").mouseenter(function(){  alert("Você entrou em p1!");  });
+
+            2.2.4- Ponteiro do mouse sai: O método mouseleave() anexa uma função de manipulador de eventos a um elemento HTML. A função é executada quando o ponteiro do mouse sai do elemento HTML.   EX: $("#p1").mouseleave(function(){  alert("Tchau! Você saiu do p1!");  });
+
+            2.2.5- Pressionar o mouse: O método mousedown() anexa uma função de manipulador de eventos a um elemento HTML. A função é executada, quando o botão esquerdo, do meio ou direito do mouse é pressionado, enquanto o mouse está sobre o elemento HTML.   EX: $("#p1").mousedown(function(){  alert("Clique aqui sobre p1!");  });
+
+            2.2.6- Soltar o botão do mouse: O método mouseup() anexa uma função de manipulador de eventos a um elemento HTML. A função é executada, ao soltar o botão esquerdo, do meio ou direito do mouse, enquanto o mouse está sobre o elemento HTML.   EX: $("#p1").mouseup(function(){  alert("Clique e solte o p1!");  });
+
+            2.2.7- Flutuar: O método hover() tem duas funções e é uma combinação dos métodos mouseenter() e mouseleave().   EX:$("#p1").hover(function(){  alert("Você emtrou em p1!");  },  function(){  alert("Tchau! Você saiu do p1!");  });  >>Explicando: A primeira função é executada quando o mouse entra no elemento HTML e a segunda função é executada quando o mouse sai do elemento HTML.
+
+            2.2.8- Foco: O método focus() anexa uma função de manipulador de eventos a um campo de formulário HTML. A função é executada quando o campo do formulário recebe o foco.   EX: $("input").focus(function(){  $(this).css("background-color", "#cccccc");  });
+
+            2.2.9- Borrão: O método blur() anexa uma função de manipulador de eventos a um campo de formulário HTML. A função é executada quando o campo do formulário perde o foco.   EX: $("input").blur(function(){  $(this).css("background-color", "#ffffff");  });
+
+3- Efeitos:
+    3.1- Ocultar/Mostrar: Com jQuery, você pode ocultar e mostrar elementos HTML com os métodos hide() e show() respectivamente. Sintaxe: $(selector).hide(speed,callback); e $(selector).show(speed,callback); [O parâmetro de velocidade é opcional e especifica a velocidade de ocultar/exibir e pode assumir os seguintes valores: "lento", "rápido" ou milissegundos. O parâmetro callback é opcional, e é uma função a ser executada após a conclusão do método hide() ou show()].   EX: $("button").click(function(){  $("p").hide(1000);  });
+
+    3.2- Visibilidade: Com o jQuery, você pode aumentar e diminuir a visibilidade de um elemento. jQuery tem os seguintes métodos fade: fadeIn(), fadeOut(), fadeToggle() e fadeTo().
+        3.2.1- Método jQuery fadeIn(): O método jQuery fadeIn() é usado para aparecer um elemento oculto.  Sintaxe: $(selector).fadeIn(speed,callback); [O parâmetro de velocidade é opcional e especifica a duração do efeito. Pode assumir os seguintes valores: "lento", "rápido" ou milissegundos. O parâmetro callback é uma função a ser executada após a conclusão de aparecer.]   EX: $("button").click(function(){  $("#div1").fadeIn();  $("#div2").fadeIn("slow");  $("#div3").fadeIn(3000);  });
+
+        3.2.2- Método jQuery fadeOut(): O método jQuery fadeOut() é usado para desaparecer um elemento visível.  Sintaxe: $(selector).fadeOut(speed,callback); [O parâmetro de velocidade é opcional e especifica a duração do efeito. Pode assumir os seguintes valores: "lento", "rápido" ou milissegundos. O parâmetro callback é uma função a ser executada após a conclusão de desaparecer.]   EX: $("button").click(function(){  $("#div1").fadeOut();  $("#div2").fadeOut("slow");  $("#div3").fadeOut(3000);  });
+
+        3.2.3- Método jQuery fadeTo(): O método fadeTo() jQuery permite desaparecer um elemento usando a opacidade (valor entre 0 e 1).  Sintaxe: $(selector).fadeTo(speed,opacity,callback); [O parâmetro de velocidade é opcional e especifica a duração do efeito. Pode assumir os seguintes valores: "lento", "rápido" ou milissegundos. O parâmetro callback é uma função a ser executada após a conclusão de desaparecer.]   EX: $("button").click(function(){  $("#div1").fadeTo("slow", 0.15);  $("#div2").fadeTo("slow", 0.4);  $("#div3").fadeTo("slow", 0.7);  });
+
+    3.3- Deslizantes: Os métodos de slide do jQuery deslizam os elementos para cima e para baixo. Query tem os seguintes métodos de slide: slideDown(), slideUp() e slideToggle().
+        3.3.1- Método jQuery slideDown (): O método jQuery slideDown() é usado para deslizar um elemento para baixo.  Sintaxe: $(selector).slideDown(speed,callback); [O parâmetro opcional de velocidade especifica a duração do efeito. Pode assumir os seguintes valores: "lento", "rápido" ou milissegundos. O parâmetro callback opcional é uma função a ser executada após a conclusão do deslizamento].   EX: $("#flip").click(function(){  $("#panel").slideDown();  });
+
+        3.3.2- Método jQuery slideUp(): O método jQuery slideUp() é usado para deslizar um elemento para cima.  Sintaxe: $(selector).slideUp(speed,callback); [O parâmetro opcional de velocidade especifica a duração do efeito. Pode assumir os seguintes valores: "lento", "rápido" ou milissegundos. O parâmetro callback opcional é uma função a ser executada após a conclusão do deslizamento].   EX: $("#flip").click(function(){  $("#panel").slideUp();  });
+
+    3.4- Animação: Com jQuery, você pode criar animações personalizadas.
+        3.4.1- O método animate(): O método animate() jQuery é usado para criar animações personalizadas.  Sintaxe: $(selector).animate({params},speed,callback); [O parâmetro params é obrigatório e define as propriedades CSS a serem animadas. O parâmetro opcional de speed especifica a duração do efeito. Pode assumir os seguintes valores: "lento", "rápido" ou milissegundos. O parâmetro callback é opcional e é uma função a ser executada após a conclusão da animação].   EX: $("button").click(function(){  $("div").animate({left: '250px'});  }); 
+
+    3.5- Stop: 
+        3.5.1- Método jQuery stop(): O método jQuery stop() é usado para interromper uma animação ou efeito antes de terminar. O método stop() funciona para todas as funções de efeito jQuery, incluindo deslizamento, fade e animações personalizadas.  Sintaxe: $(selector).stop(stopAll,goToEnd); [O parâmetro opcional stopAll especifica se também a fila de animação deve ser limpa ou não. (O padrão é falso, o que significa que apenas a animação ativa será interrompida, permitindo que qualquer animação em fila seja executada posteriormente.)] [O parâmetro opcional goToEnd especifica se a animação atual deve ou não ser concluída imediatamente. (O padrão é falso.)]   EX: $("#stop").click(function(){  $("#panel").stop();  });
+
+    3.6- Retorno de Chamada (Callback): Uma função de retorno de chamada é executada após o efeito atual estar 100% concluído.
+        3.6.1- Funções de retorno de chamada do jQuery: As instruções JavaScript são executadas linha por linha. No entanto, com efeitos, a próxima linha de código pode ser executada mesmo que o efeito não tenha sido concluído. Isso pode criar erros. Para evitar isso, você pode criar uma função de retorno de chamada. Uma função de retorno de chamada é executada após o término do efeito atual.  Sintaxe típica: $( seletor ).hide( velocidade, retorno de chamada );   EX: $("button").click(function(){  $("p").hide("slow", function(){    alert("O paragrafo agora está oculto");  });  });
+
+    3.7- Encadeamento: Com jQuery, você pode encadear ações/métodos. O encadeamento nos permite executar vários métodos jQuery (no mesmo elemento) em uma única instrução. 
+        3.7.1- Encadeamento de método jQuery: Até agora, escrevemos declarações jQuery uma de cada vez (uma após a outra). No entanto, existe uma técnica chamada encadeamento, que nos permite executar vários comandos jQuery, um após o outro, no(s) mesmo(s) elemento(s). Dica: Dessa forma, os navegadores não precisam encontrar o(s) mesmo(s) elemento(s) mais de uma vez. Para encadear uma ação, basta anexar a ação à ação anterior.   EX: $("#p1").css("color", "red").slideUp(2000).slideDown(2000);  >>Explicando: O exemplo anterior encadeia os métodos css(), slideUp()e slideDown() . O elemento "p1" primeiro muda para vermelho, depois desliza para cima e depois para baixo.
+
+4- HTML:
+    4.1- Manipulação de jQuery DOM: Uma parte muito importante do jQuery é a possibilidade de manipular o DOM. O jQuery vem com vários métodos relacionados ao DOM que facilitam o acesso e a manipulação de elementos e atributos.
+
+        4.1.1- Obter conteúdo: Três métodos jQuery simples, mas úteis, para manipulação de DOM são: text() [Define ou retorna o conteúdo de texto dos elementos selecionados], html() [Define ou retorna o conteúdo dos elementos selecionados (incluindo marcação HTML)] e val() [Define ou retorna o valor dos campos do formulário].   EX: $("#btn1").click(function(){  alert("Text: " + $("#test").text());  });  $("#btn2").click(function(){  alert("HTML: " + $("#test").html());  });  >>Explicando: O exemplo anterior demonstra como obter conteúdo com jQuery os métodos text() e html():
+
+        4.1.2- Obter atributos: O método jQuery attr() é usado para obter valores de atributos.   EX: $("button").click(function(){  alert($("#w3s").attr("href"));  });  >>Explicando: O exemplo anterior demonstra como obter o valor do atributo href em um link:
+
+    4.2- Definir: 
+        4.2.1- Definir: Usaremos os mesmos três métodos da página anterior para definir o conteúdo: text() [Define ou retorna o conteúdo de texto dos elementos selecionados], html() [Define ou retorna o conteúdo dos elementos selecionados (incluindo marcação HTML)], val() [Define ou retorna o valor dos campos do formulário].   EX: $("#btn1").click(function(){  $("#test1").text("Hello world!");  });  $("#btn2").click(function(){  $("#test2").html("<b>Hello world!</b>");  });  $("#btn3").click(function(){  $("#test3").val("Dolly Duck");  });  >>Explicando: O exemplo anterior demonstra como definir o conteúdo com os métodos jQuery text(), html() e val().
+
+        4.2.2- Definir atributos: O método jQuery attr() também é usado para definir/alterar valores de atributo.   EX: $("button").click(function(){  $("#w3s").attr("href", "https://www.w3schools.com/jquery/");  });  >>Explicando: O exemplo anterior demonstra como alterar (definir) o valor do atributo href em um link.
+
+    4.3- Adicionar novo conteúdo HTML: Veremos quatro métodos jQuery usados ​​para adicionar novo conteúdo: append() [Insere conteúdo no final dos elementos selecionados], prepend() [Insere conteúdo no início dos elementos selecionados], after() [Insere conteúdo após os elementos selecionados] e before() [Insere conteúdo antes dos elementos selecionados].
+        4.3.1- Método jQuery append(): O método jQuery append() insere o conteúdo NO FINAL dos elementos HTML selecionados.   EX: $("p").append("Texto depois do conteúdo.");
+
+        4.3.2- Método jQuery prepend(): O método jQuery prepend() insere o conteúdo NO INÍCIO dos elementos HTML selecionados.   EX: $("p").prepend("Texto antes do conteúdo.");
+
+        4.3.3- Métodos jQuery depois () e antes (): O método jQuery after() insere o conteúdo DEPOIS dos elementos HTML selecionados. O método jQuery before()insere o conteúdo ANTES dos elementos HTML selecionados.   EX: $("img").after("Depois");   EX2: $("img").before("Antes");
+
+    4.4- Remover Elementos/Conteúdo: Para remover elementos e conteúdo, existem principalmente dois métodos jQuery: remove() [Remove o elemento selecionado (e seus elementos filhos)] e empty() [Remove os elementos filho do elemento selecionado].
+        4.4.1- Método jQuery remove(): O método jQuery remove() remove os elementos selecionados e seus elementos filhos.   EX: $("#div1").remove();
+
+        4.4.2- Método jQuery empty(): O método empty() jQuery remove os elementos filhos dos elementos selecionados.   EX: $("#div1").empty();
+
+    4.5- JQuery Manipulando CSS: jQuery tem vários métodos para manipulação de CSS. Veremos os seguintes métodos: addClass() [Adiciona uma ou mais classes aos elementos selecionados], removeClass() [Remove uma ou mais classes dos elementos selecionados], toggleClass() [Alterna entre adicionar/remover classes dos elementos selecionados] e css() [Define ou retorna o atributo de estilo]
+
+        4.5.1- Método jQuery addClass(): O exemplo a seguir mostra como adicionar atributos de classe a diferentes elementos. Claro que você pode selecionar vários elementos, ao adicionar classes:   EX: $("button").click(function(){  $("#div1").addClass("important blue");  });
+
+        4.5.2- Método jQuery removeClass (): O exemplo a seguir mostra como remover um atributo de classe específico de diferentes elementos:   EX: $("button").click(function(){  $("h1, h2, p").removeClass("blue");  });
+
+        4.5.3- Método jQuery toggleClass (): O exemplo a seguir mostrará como usar o toggleClass()método jQuery. Este método alterna entre adicionar/remover classes dos elementos selecionados:   EX: $("button").click(function(){  $("h1, h2, p").toggleClass("blue");  });
+
+    4.6- Método css() jQuery: O método css() define ou retorna uma ou mais propriedades de estilo para os elementos selecionados.
+
+        4.6.1- Retornar uma propriedade CSS: Para retornar o valor de uma propriedade CSS especificada, use a seguinte sintaxe: css("propertyname"); O exemplo a seguir retornará o valor da cor de fundo do PRIMEIRO elemento correspondente:   EX: $("p").css("background-color");
+
+        4.6.2- Definir uma propriedade CSS: Para definir uma propriedade CSS especificada, use a seguinte sintaxe: css("propertyname","value"); O exemplo a seguir definirá o valor da cor de fundo para TODOS os elementos correspondentes:   EX: $("p").css("background-color", "yellow");
+
+    4.7- Métodos de dimensão jQuery: jQuery tem vários métodos importantes para trabalhar com dimensões: width(), height(), innerWidth(), innerHeight(), outerWidth() e outerHeight().
+
+        4.7.1- Métodos jQuery width() e height(): O método width() define ou retorna a largura de um elemento (exclui preenchimento, borda e margem). O método height() define ou retorna a altura de um elemento (exclui preenchimento, borda e margem).   EX: $("button").click(function(){  var txt = "";  txt += "Width: " + $("#div1").width() + "</br>";  txt += "Height: " + $("#div1").height();  $("#div1").html(txt);  });  >>Explicando: O exemplo anterior retorna a largura e a altura de um  elemento <div> especificado.
+
+        4.7.2- Métodos jQuery innerWidth() e innerHeight(): O método innerWidth() retorna a largura de um elemento (inclui preenchimento). O método innerHeight() retorna a altura de um elemento (inclui preenchimento).   EX: $("button").click(function(){  var txt = "";  txt += "Inner width: " + $("#div1").innerWidth() + "</br>";  txt += "Inner height: " + $("#div1").innerHeight();  $("#div1").html(txt);  });  >>Explicando: O exemplo anterior retorna a largura/altura interna de um elemento <div> especificado.
+
+        4.7.3- Métodos jQuery outerWidth() e outerHeight(): O método outerWidth() retorna a largura de um elemento (inclui preenchimento e borda). O método outerHeight() retorna a altura de um elemento (inclui preenchimento e borda).   EX: $("button").click(function(){  var txt = "";  txt += "Outer width: " + $("#div1").outerWidth() + "</br>";  txt += "Outer height: " + $("#div1").outerHeight();  $("#div1").html(txt);  });  >>Explicando: O exemplo anterior retorna a largura/altura externa de um elemento <div> especificado.
+
+5- Traversing:
+    5.1- O que é Traversing?: A traversing do jQuery, que significa "mover-se", é usada para "encontrar" (ou selecionar) elementos HTML com base em sua relação com outros elementos. Comece com uma seleção e percorra essa seleção até chegar aos elementos desejados.
+
+    5.2- Ancestrais: Com jQuery, você pode percorrer a árvore DOM para encontrar os ancestrais de um elemento. Um antepassado é um pai, avô, bisavô e assim por diante. Três métodos jQuery úteis para percorrer a árvore DOM são: parent(), parents() e parentsUntil()
+
+        5.2.1- método parent jQuery (): O método parent() retorna o elemento pai direto do elemento selecionado. Este método percorre apenas um único nível acima da árvore DOM.   EX: $(document).ready(function(){  $("span").parent();  });  >>Explicando: O exemplo anterior retorna o elemento pai direto de cada elemento <span> .
+
+        5.2.2- Método parents jQuery (): O método parents() retorna todos os elementos ancestrais do elemento selecionado, até o elemento raiz do documento (<html>).   EX: $(document).ready(function(){  $("span").parents();  });  >>Explicando: O exemplo anterior retorna todos os ancestrais de todos os elementos <span>.
+
+        5.2.3- Método jQuery parentUntil (): O método parentsUntil() retorna todos os elementos ancestrais entre dois argumentos fornecidos.   EX: $(document).ready(function(){  $("span").parentsUntil("div");  });  >>Explicando: O exemplo anterior retorna todos os elementos ancestrais entre a <span> e um elemento <div>.
+
+    5.3- Descendestes: Com jQuery, você pode percorrer a árvore DOM para encontrar descendentes de um elemento. Um descendente é um filho, neto, bisneto e assim por diante. Dois métodos jQuery úteis para percorrer a árvore DOM são: children() e find().
+
+        5.3.1- Método jQuery children(): O método children() retorna todos os filhos diretos do elemento selecionado. Este método percorre apenas um único nível abaixo da árvore DOM.   EX: $(document).ready(function(){  $("div").children();  });  >>Explicando: O exemplo anterior retorna todos os elementos que são filhos diretos de cada elemento <div>.
+
+        5.3.2- Método jQuery find(): O método find() retorna elementos descendentes do elemento selecionado, até o último descendente.   EX: $(document).ready(function(){  $("div").find("span");  });  >>Explicando: O exemplo anterior retorna todos os <span> elementos descendentes de <div>:
+
+    5.3- Irmãos: Com jQuery, você pode percorrer lateralmente a árvore DOM para encontrar irmãos de um elemento. Irmãos compartilham o mesmo pai. Existem muitos métodos jQuery úteis para percorrer lateralmente na árvore DOM: siblings(), next(), nextAll(), nextUntil(), prev(),, prevAll() e prevUntil().
+
+        5.3.1- Método irmãos jQuery (): O método siblings() retorna todos os elementos irmãos do elemento selecionado.   EX: $(document).ready(function(){  $("h2").siblings();  });  >>Explicando: O exemplo anterior retorna todos os elementos irmãos de <h2>.
+
+        5.3.2- Método jQuery next(): O método next() retorna o próximo elemento irmão do elemento selecionado.   EX: $(document).ready(function(){  $("h2").next();  });  >>Explicando: O exemplo anterior retorna o próximo irmão de <h2>.
+
+        5.3.3- Método jQuery nextAll(): O método nextAll() retorna todos os próximos elementos irmãos do elemento selecionado.   EX: $(document).ready(function(){  $("h2").nextAll();  });  >>Explicando: O exemplo anterior retorna todos os elementos irmãos próximos de <h2>.
+
+        5.3.4- Método jQuery nextUntil (): O método nextUntil() retorna todos os elementos irmãos próximos entre dois argumentos fornecidos.   EX: $(document).ready(function(){  $("h2").nextUntil("h6");  });  >>Explicando: O exemplo anterior retorna todos os elementos irmãos entre a <h2> e um elemento <h6>:
+
+        5.3.5- Métodos jQuery prev(), prevAll() e prevUntil(): Os métodos prev(), prevAll() e prevUntil() funcionam exatamente como os métodos acima, mas com funcionalidade reversa: eles retornam elementos irmãos anteriores (passam para trás ao longo dos elementos irmãos na árvore DOM, em vez de avançar).
+
+    5.4- Filtragem: Os métodos de filtragem mais básicos são first(), last() e eq(), que permitem selecionar um elemento específico com base em sua posição em um grupo de elementos. Outros métodos de filtragem filter() e not() permitem selecionar elementos que correspondem ou não a determinados critérios.
+
+        5.4.1- Método jQuery first(): O método first() retorna o primeiro elemento dos elementos especificados.   EX: $(document).ready(function(){  $("div").first();  });  >>Explicando: O exemplo anterior seleciona o primeiro elemento <div>.
+
+        5.4.2- Método jQuery last (): O método last() retorna o último elemento dos elementos especificados.   EX: $(document).ready(function(){  $("div").last();  });  >>Explicando: O exemplo anterior seleciona o último elemento <div>.
+
+        5.4.3- Método jQuery eq (): O método eq() retorna um elemento com um número de índice específico dos elementos selecionados. Os números do índice começam em 0, então o primeiro elemento terá o número do índice 0 e não 1.   EX: $(document).ready(function(){  $("p").eq(1);  });  >>Explicando: O exemplo anterior seleciona o segundo elemento <p> (número do índice 1).
+
+        5.4.4- Método jQuery filter(): O método filter() permite especificar um critério. Os elementos que não correspondem aos critérios são removidos da seleção e os que correspondem serão retornados.   EX: $(document).ready(function(){  $("p").filter(".intro");  });  >>Explicando: O exemplo anterior retorna todos os elementos <p> com nome de classe "intro".
+
+        5.4.5- Método jQuery not(): O método not() retorna todos os elementos que não correspondem aos critérios. O método not() é o oposto de filter().   EX: $(document).ready(function(){  $("p").not(".intro");  });  >>Explicando: O exemplo anterior retorna todos os elementos <p> que não possuem o nome de classe "intro":
+
+6- Ajax: AJAX é a arte de trocar dados com um servidor e atualizar partes de uma página da web (sem recarregar a página inteira).
+
+    6.1- Método jQuery load(): O método jQuery load() é um método AJAX simples, mas poderoso. O método load() carrega dados de um servidor e coloca os dados retornados no elemento selecionado. Sintaxe: $(selector).load(URL,data,callback); [O parâmetro de URL é obrigatório e especifica o URL que você deseja carregar], [O parâmetro de data é opcional e especifica um conjunto de pares chave/valor para enviar junto com a solicitação], [O parâmetro callback é opcional e é o nome de uma função a ser executada após a conclusão do método load()].   EX: $("#div1").load("demo_test.txt");
+
+    6.2- Métodos AJAX get() e post(): Os métodos jQuery get() e post() são usados ​​para solicitar dados do servidor com uma solicitação HTTP GET ou POST.
+
+        6.2.1- Método jQuery $.get(): O método $.get() solicita dados do servidor com uma solicitação HTTP GET. Sintaxe: $.get(URL,callback); [O parâmetro de URL é obrigatório e especifica a URL que você deseja solicitar], [O parâmetro callback é opcional e é o nome de uma função a ser executada se a solicitação for bem-sucedida].   EX: $("button").click(function(){  $.get("demo_test.asp", function(data, status){   alert("Data: " + data + "\nStatus: " + status);  });  });  >>Explicando: O exemplo anterior usa o método $.get() para recuperar dados de um arquivo no servidor.
+
+        6.2.2- Método jQuery $.post(): O método $.post() solicita dados do servidor usando uma solicitação HTTP POST. Sintaxe: $.post(URL,data,callback); [O parâmetro de URL é obrigatório e especifica a URL que você deseja solicitar], [O parâmetro de data é opcional e especifica alguns dados a serem enviados junto com a solicitação], [O parâmetro callback é opcional e é o nome de uma função a ser executada se a solicitação for bem-sucedida].   EX: $("button").click(function(){  $.post("demo_test_post.asp",  function(data, status){  alert("Data: " + data + "\nStatus: " + status);  });  });  >>Explicando: O exemplo anterior usa o método $.post() para enviar alguns dados junto com a solicitação.
+
+7- Referência completa: https://www.w3schools.com/jquery/jquery_ref_overview.asp

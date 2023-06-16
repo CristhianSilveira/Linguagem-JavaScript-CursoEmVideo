@@ -1,0 +1,166 @@
+                    ------ Node Completo ------
+
+
+        Olá, criei esse arquivo com as principais aplicações do Node explicadas e com exemplos.
+
+                OBS: os exemplos não estão formatados para não ocupar muitas linhas do arquivo.
+
+
+1- Introdução: Node.js é um ambiente de servidor de código aberto. Node.js permite executar JavaScript no servidor.
+    1.1- O que o Node.js pode fazer? Node.js pode gerar conteúdo de página dinâmico, Node.js pode criar, abrir, ler, gravar, excluir e fechar arquivos no servidor, Node.js pode coletar dados de formulário e Node.js pode adicionar, excluir, modificar dados em seu banco de dados. Utilizado para construir APIs (back-end)
+
+    1.2- O que é um arquivo Node.js? Os arquivos Node.js contêm tarefas que serão executadas em determinados eventos, Um evento típico é alguém tentando acessar uma porta no servidor. Os arquivos Node.js devem ser iniciados no servidor antes de terem qualquer efeito. Os arquivos Node.js têm extensão ".js". Crie uma pasta e digite: npm init (para criar o projeto)
+
+    1.3- Dependências:
+        1.3.1- Dependência local: instalar o módulo localmente, Sintaxe no terminal: npm install (nomeDoModulo).   EX: npm install nodemon
+
+        1.3.1- Dependência global: instalar o módulo globalmente, ou seja todo projeto vai ter esse módulo. Sintaxe no terminal: npm install -g (nomeDoModulo).   EX: npm install -g nodemon
+
+2- Fundamentos:
+    2.1- Módulos: É um conjunto de funções que você deseja incluir em seu aplicativo.
+        2.1.1- Incluir Módulos: Para incluir um módulo, use a função require() com o nome do módulo.   EX: var http = require('http');
+
+    2.2- Módulo path: É usado para manipular arquivos e diretórios. 
+        2.2.1- Nome do Arquivo Atual: Para exibir o nome do arquivo atual use path.basename   EX: console.log(path.basename(__filename));
+
+        2.2.2- Nome do Diretório Atual: Para exibir o nome do diretório atual use path.dirname   EX: console.log(path.dirname(__filename));
+
+        2.2.3- Extensão do Arquivo: Para exibir a extensão do arquivo use path.extname   EX: console.log(path.extname(__filename));
+
+    2.3- Módulo HTTP: O Node.js tem um módulo interno chamado HTTP, que permite que o Node.js transfira dados pelo Hyper Text Transfer Protocol (HTTP). Para acessar digite no navegador: localhost:8080/(local)
+        
+        2.3.1- Node.js como um servidor Web: Use o método createServer() para criar um servidor HTTP.   EX: http.createServer(function (req, res) { res.write('Hello World!'); res.end(); }).listen(8080);  >>Explicando: res.write = Escreve a resposta (mensagem) pro cliente, res.end = Fim da resposta
+
+        2.3.2- Adicionar um cabeçalho HTTP: Se a resposta do servidor HTTP deve ser exibida como HTML, você deve incluir um cabeçalho HTTP com o tipo de conteúdo correto.   EX: var http = require('http');  http.createServer(function (req, res) {  res.writeHead(200, {'Content-Type': 'text/html'});  res.write('Hello World!');  res.end();  }).listen(8080);  >>Explicando: O primeiro argumento do método res.writeHead() é o código de status, 200 significa que está tudo OK, o segundo argumento é um objeto contendo os cabeçalhos de resposta.
+
+    2.4- Módulo URL: 
+        2.4.1- O módulo de URL integrado: O módulo URL divide um endereço da web em partes legíveis.Para incluir o módulo URL, use o método require().   EX: var url = require('url');  var adr = 'http://localhost:8080/default.htm?year=2017&month=february';  var q = url.parse(adr, true);  console.log(q.host);  console.log(q.pathname);  console.log(q.search);  var qdata = q.query;  console.log(qdata.month);  >>Explicando: na parte de (q.host) retorna 'localhost:8080', em (q.pathname) retorna '/default.htm', em (q.search) retorna '?year=2017&month=february', em (q.query) retorna um objeto: {year:2017, month: 'february'}, em (qdata.month) retorna 'february'
+
+    2.5- File System: O módulo do sistema de arquivos Node.js permite que você trabalhe com o sistema de arquivos em seu computador. Para incluir o módulo File System, utilize o método require(). Uso comum para o módulo File System: Ler arquivos, Criar arquivos, Atualizar arquivos, Deletar arquivos e Renomear arquivos   EX: var fs = require('fs');
+
+        2.5.1- Ler arquivos: O método fs.readFile() é usado para ler arquivos em seu computador.   EX: var http = require('http');  var fs = require('fs');  http.createServer(function (req, res) {  fs.readFile('demofile1.html', function(err, data) {  res.writeHead(200, {'Content-Type': 'text/html'});  res.write(data);  return res.end();  });  }).listen(8080);
+
+        2.5.2- Criar arquivos: O módulo File System possui métodos para criar novos arquivos: fs.appendFile(), fs.open() e fs.writeFile(). O método fs.appendFile() anexa o conteúdo especificado a um arquivo. Se o arquivo não existir, o arquivo será criado. O método fs.open() recebe um "flag" como segundo argumento, se o flag for "w" para "escrita", o arquivo especificado é aberto para gravação. Se o arquivo não existir, um arquivo vazio será criado. O método fs.writeFile() substitui o arquivo e o conteúdo especificados, se existirem. Se o arquivo não existir, um novo arquivo, contendo o conteúdo especificado, será criado.
+
+        2.5.3- Atualizar arquivos: O módulo File System possui métodos para atualizar arquivos: fs.appendFile() e fs.writeFile(). O método fs.appendFile() anexa o conteúdo especificado no final do arquivo especificado. O método fs.writeFile() substitui o arquivo e o conteúdo especificados.   EX: var fs = require('fs');  fs.writeFile('mynewfile3.txt', 'Esse é o meu texto', function (err) {  if (err) throw err;  console.log('Substituído!');  });
+
+        2.5.4.- Deletar arquivos: Para excluir um arquivo com o módulo File System, use o método fs.unlink(). O método fs.unlink() exclui o arquivo especificado.   EX: var fs = require('fs');  fs.unlink('mynewfile2.txt', function (err) {  if (err) throw err;  console.log('Arquivo Deletado!');  });
+
+        2.5.5- Renomear arquivos: Para renomear um arquivo com o módulo File System, use o método fs.rename(). O método fs.rename() renomeia o arquivo especificado.   EX: var fs = require('fs');  fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {  if (err) throw err;  console.log('Arquivo Renomeado!');  });  >>Explicando: Renomeie "mynewfile1.txt" para "myrenamedfile.txt"
+
+    2.6- NPM (Node Package Manager): O NPM é um gerenciador de pacotes para pacotes Node.js ou módulos de terceiros, se preferir. São armazenados na pasta chamada "node_modules"
+        2.6.1- O que é um Pacote? Um pacote no Node.js contém todos os arquivos necessários para um módulo. Módulos são bibliotecas JavaScript que você pode incluir em seu projeto.
+
+        2.6.2- Usando um pacote: Depois que o pacote estiver instalado, ele estará pronto para uso. Inclua o pacote da mesma forma que você inclui qualquer outro módulo:   EX: var uc = require('upper-case');
+
+    2.7- Eventos: O Node.js é perfeito para aplicativos orientados a eventos.
+
+        2.7.1- Eventos em Node.js: Cada ação em um computador é um evento. Como quando uma conexão é feita ou um arquivo é aberto. Objetos em Node.js podem disparar eventos, como o objeto readStream dispara eventos ao abrir e fechar um arquivo.   EX: var fs = require('fs');  var rs = fs.createReadStream('./demofile.txt');  rs.on('open', function () {  console.log('O arquivo está aberto');  });
+
+        2.7.2- Módulo de Eventos: O Node.js tem um módulo embutido, chamado "Eventos", onde você pode criar, disparar e ouvir seus próprios eventos. Para incluir o módulo interno de eventos, use o método require(). Além disso, todas as propriedades e métodos de eventos são uma instância de um objeto EventEmitter. Para poder acessar essas propriedades e métodos, crie um objeto EventEmitter:   EX: var events = require('events');  var eventEmitter = new events.EventEmitter();
+
+        2.7.3- O objeto EventEmitter: Você pode atribuir manipuladores de eventos aos seus próprios eventos com o objeto EventEmitter. No exemplo abaixo criamos uma função que será executada quando um evento "grito" for disparado. Para disparar um evento, use o método emit().  EX: var events = require('events');  var eventEmitter = new events.EventEmitter();  var myEventHandler = function () {  console.log('Eu escutei um grito!');  }  eventEmitter.on('grito', myEventHandler);  eventEmitter.emit('grito');
+
+    2.8- Upload Files: 
+        2.8.1- O Módulo Formidável: Existe um módulo muito bom para trabalhar com upload de arquivos, chamado "Formidável". O módulo Formidable pode ser baixado e instalado usando o NPM: C:\Users\Your Name>npm install formidable . Depois de baixar o módulo Formidable, você pode incluir o módulo em qualquer aplicativo   EX: var formidable = require('formidable');
+
+        2.7.2- Fazer upload de arquivos: Agora você está pronto para criar uma página da Web em Node.js que permite ao usuário enviar arquivos para o seu computador: 
+            2.7.2.1- Etapa 1: criar um formulário de upload: Crie um arquivo Node.js que grave um formulário HTML, com um campo de upload.
+
+            2.7.2.2- Etapa 2: analisar o arquivo enviado: Inclua o módulo Formidable para poder analisar o arquivo carregado assim que chegar ao servidor. Quando o arquivo é carregado e analisado, ele é colocado em uma pasta temporária em seu computador.
+
+            2.7.2.3- Etapa 3: salve o arquivo: Quando um arquivo é carregado com sucesso no servidor, ele é colocado em uma pasta temporária. O caminho para este diretório pode ser encontrado no objeto "arquivos", passado como terceiro argumento na função callback do método parse(). Para mover o arquivo para a pasta de sua escolha, use o módulo File System e renomeie o arquivo.
+
+            2.7.2.4- Exemplo completo: var http = require('http');  var formidable = require('formidable');  var fs = require('fs');  http.createServer(function (req, res) {  if (req.url == '/fileupload') {  var form = new formidable.IncomingForm();  form.parse(req, function (err, fields, files) {  var oldpath = files.filetoupload.filepath;  var newpath = 'C:/Users/Your Name/' + files.filetoupload.originalFilename;  fs.rename(oldpath, newpath, function (err) {  if (err) throw err;  res.write('Arquivo carregado e movido!');  res.end();  });  });  } else {  res.writeHead(200, {'Content-Type': 'text/html'});  res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');  res.write('<input type="file" name="filetoupload"><br>');  res.write('<input type="submit">');  res.write('</form>');  return res.end();  }  }).listen(8080);
+
+    2.9- Email: 
+        2.9.1- Módulo Nodemailer: O módulo Nodemailer facilita o envio de e-mails do seu computador. O módulo Nodemailer pode ser baixado e instalado usando npm: C:\Users\Your Name>npm install nodemailer . Depois de baixar o módulo Nodemailer, você pode incluir o módulo em qualquer aplicativo.   EX: var nodemailer = require('nodemailer');
+
+        2.9.2- Enviar um email: Agora você está pronto para enviar e-mails do seu servidor. Use o nome de usuário e a senha do provedor de e-mail selecionado para enviar um e-mail. Este tutorial mostrará como usar sua conta do Gmail para enviar um e-mail.   EX: var nodemailer = require('nodemailer');  var transporter = nodemailer.createTransport({  service: 'gmail',  auth: {  user: 'youremail@gmail.com',  pass: 'yourpassword'  }});  var mailOptions = {  from: 'youremail@gmail.com',  to: 'myfriend@yahoo.com',  subject: 'Enviando email usando Node.js',  text: 'Como é fácil!'  };  transporter.sendMail(mailOptions, function(error, info){  if (error) {  console.log(error);  } else {  console.log('Email enviado: ' + info.response);  }  });
+
+3- MySQL: Node.js pode ser usado em aplicativos de banco de dados. Um dos bancos de dados mais populares é o MySQL.
+
+    3.1-Introdução ao MySQL:
+        3.1.1- Instalar Driver MySQL: Assim que tiver o MySQL instalado e funcionando em seu computador, você pode acessá-lo usando Node.js. Para acessar um banco de dados MySQL com Node.js, você precisa de um driver MySQL. Este tutorial usará o módulo "mysql", baixado do NPM. Para baixar e instalar o módulo "mysql", abra o Terminal de Comando e execute o seguinte:  npm install mysql . Agora você baixou e instalou um driver de banco de dados mysql. Node.js pode usar este módulo para manipular o banco de dados MySQL:   EX: var mysql = require('mysql');
+
+        3.1.2- Criar conexão: Comece criando uma conexão com o banco de dados. Use o nome de usuário e a senha do seu banco de dados MySQL.   EX: var mysql = require('mysql');  var con = mysql.createConnection({  host: "localhost",  user: "yourusername",  password: "yourpassword"  });  con.connect(function(err) {  if (err) throw err;  console.log("Conectado!");  });
+
+    3.2- Criar Banco de Dados MySQL: Para criar um banco de dados no MySQL, use a instrução "CREATE DATABASE".   EX: var mysql = require('mysql');  var con = mysql.createConnection({  host: "localhost",  user: "yourusername",  password: "yourpassword"  });  con.connect(function(err) {  if (err) throw err;  console.log("Conectado!");  con.query("CREATE DATABASE mydb", function (err, result) {  if (err) throw err;  console.log("Banco de Dados criado");  });  });  >>Explicando: Cria um banco de dados chamado "mydb"
+
+    3.3- Criar Tabela MySQL: Para criar uma tabela no MySQL, use a instrução "CREATE TABLE".   EX: var mysql = require('mysql');  var con = mysql.createConnection({ host: "localhost",  user: "yourusername",  password: "yourpassword",  database: "mydb"  });  con.connect(function(err) {  if (err) throw err;  console.log("Conectado!");  var sql = "CREATE TABLE clientes (id INT AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(255), endereço VARCHAR(255))";  con.query(sql, function (err, result) {   if (err) throw err;  console.log("Tabela criada");  });  });  >>OBS: "INT AUTO_INCREMENT PRIMARY KEY", inserirá um número exclusivo para cada registro. Começando em 1 e aumentado em um para cada registro.
+
+    3.4- Insert into MySQL:
+        3.4.1- Inserir na Tabela: Para preencher uma tabela no MySQL, use a instrução "INSERT INTO".   EX: con.connect(function(err) {  if (err) throw err;  console.log("Conectado!");  var sql = "INSERT INTO clientes (nome, endereço) VALUES ('Ricardo', 'Av. Nova América, 124')";  con.query(sql, function (err, result) {  if (err) throw err;  console.log("1 registro inserido");  }); });
+
+        3.4.2- Inserir vários registros: Para inserir mais de um registro, faça um array contendo os valores, e insira um ponto de interrogação no sql, que será substituído pelo array dos valores: INSERT INTO clientes (nome, endereço) VALUES ?   EX: con.connect(function(err) {  if (err) throw err;  console.log("Connected!");  var sql = "INSERT INTO clientes (nome, endereço) VALUES ?";  var values = [  ['João', 'Rua do Centro, 71'],  ['Peter', 'Rua Cristal, 4'],  ['Michael', 'Rua das Pedras, 34'],  ['Richard', 'Rua da Esperança, 31'],  ['William', 'Rua das Flores, 54'],  ];  con.query(sql, [values], function (err, result) {  if (err) throw err;  console.log("Número de registros inseridos: " + result.affectedRows);  });  });
+
+    3.5- Seleção MySQL:
+        3.5.1- Seleção de uma tabela: Para selecionar dados de uma tabela no MySQL, use a instrução "SELECT".   EX: var mysql = require('mysql');  var con = mysql.createConnection({  host: "localhost",  user: "yourusername",  password: "yourpassword",  database: "mydb"  });  con.connect(function(err) {  if (err) throw err;  con.query("SELECT * FROM clientes", function (err, result, fields) {  if (err) throw err;  console.log(result);  });  });  >>Explicando: Selecione todos os registros da tabela "clientes" e exiba o objeto de resultado.
+
+        3.5.2- Selecionando Colunas: Para selecionar apenas algumas das colunas em uma tabela, use a instrução "SELECT" seguida do nome da coluna.   EX: con.connect(function(err) {  if (err) throw err;  con.query("SELECT nome, endereço FROM clientes", function (err, result, fields) {  if (err) throw err;  console.log(result);  });  });  >>Explicando: Selecione o nome e o endereço da tabela "clientes" e exiba o objeto de retorno.
+
+    3.6- MySQL Where:
+        3.6.1- Selecione com um filtro: Ao selecionar registros de uma tabela, você pode filtrar a seleção usando a instrução "WHERE".   EX: con.connect(function(err) {  if (err) throw err;  con.query("SELECT * FROM clientes WHERE endereço = 'Rua das Flores, 54'", function (err, result) {  if (err) throw err;  console.log(result);  });  });  >>Explicando: Selecione o registro com o endereço "Rua das Flores, 54".
+
+        3.6.2- Caracteres curinga: Você também pode selecionar os registros que começam, incluem ou terminam com uma determinada letra ou frase. Use o curinga '%' para representar zero, um ou vários caracteres.   EX: con.connect(function(err) {  if (err) throw err;  con.query("SELECT * FROM clientes WHERE endereço LIKE 'R%'", function (err, result) {  if (err) throw err;  console.log(result);  });  });  >>Explicando: Selecione os registros onde o endereço começa com a letra 'R':
+
+    3.7- Ordem do MySQL:
+        3.7.1- Ordenar o resultado: Use a instrução ORDER BY para classificar o resultado em ordem crescente ou decrescente. A palavra-chave ORDER BY classifica o resultado em ordem crescente por padrão. Para classificar o resultado em ordem decrescente, use a palavra-chave DESC.   EX: con.connect(function(err) {  if (err) throw err;  con.query("SELECT * FROM clientes ORDER BY nome", function (err, result) {  if (err) throw err;  console.log(result);  });  });
+
+        3.7.2- PEDIR POR DESC: Use a palavra-chave DESC para classificar o resultado em ordem decrescente.   EX: con.connect(function(err) {  if (err) throw err;  con.query("SELECT * FROM clientes ORDER BY nome DESC", function (err, result) {  if (err) throw err;  console.log(result);  });  });
+
+    3.8- Excluir MySQL:
+        3.8.1- Apagar registro: Você pode excluir registros de uma tabela existente usando a instrução "DELETE FROM".   EX: var mysql = require('mysql');  var con = mysql.createConnection({  host: "localhost",  user: "yourusername",  password: "yourpassword",  database: "mydb"  });  con.connect(function(err) {  if (err) throw err;  var sql = "DELETE FROM clientes WHERE endereço = 'Rua das Pedras, 34'";  con.query(sql, function (err, result) {  if (err) throw err;  console.log("Número de registros excluídos: " + result.affectedRows);  });  });
+
+    3.9- Drop Table MySQL:
+        3.9.1- Excluir uma tabela: Você pode excluir uma tabela existente usando a instrução "DROP TABLE".   EX: var mysql = require('mysql');  var con = mysql.createConnection({  host: "localhost",  user: "yourusername",  password: "yourpassword",  database: "mydb"  });  con.connect(function(err) {  if (err) throw err;  var sql = "DROP TABLE clientes";  con.query(sql, function (err, result) {  if (err) throw err;  console.log("Tabela deletada");  });  });
+
+    3.10- Atualização do MySQL:
+        3.10.1- Atualizar tabela: Você pode atualizar os registros existentes em uma tabela usando a instrução "UPDATE".   EX: var mysql = require('mysql'); var con = mysql.createConnection({  host: "localhost",  user: "yourusername",  password: "yourpassword",  database: "mydb"  });  con.connect(function(err) {  if (err) throw err;  var sql = "UPDATE clientes SET endereço = 'Rua das Flores' WHERE endereço = 'Rua das Pedras'";  con.query(sql, function (err, result) {  if (err) throw err;  console.log(result.affectedRows + " record(s) updated");  });  });  >>Explicando: Substitua a coluna de endereço de "Rua das Flores" para "Rua das Pedras"
+
+    3.11- Limite do MySQL:
+        3.11.1- Limite o resultado: Você pode limitar o número de registros retornados da consulta, usando a instrução "LIMIT".   EX: var mysql = require('mysql');  var con = mysql.createConnection({  host: "localhost",  user: "yourusername",  password: "yourpassword",  database: "mydb"  });  con.connect(function(err) {  if (err) throw err;  var sql = "SELECT * FROM clientes LIMIT 2, 5";  con.query(sql, function (err, result) {  if (err) throw err;  console.log(result);  });  });  >>Explicando: Selecione os 5 primeiros registros começando na terceira posição na tabela "clientes".
+
+4- MongoDB: Node.js pode ser usado em aplicativos de banco de dados. Um dos bancos de dados NoSQL mais populares é o MongoDB.
+    4.1- Instalação do MongoDB no Node.js:
+        4.1.1- Instale o driver do MongoDB: Vamos tentar acessar um banco de dados MongoDB com Node.js. Para baixar e instalar o driver oficial do MongoDB, abra o Terminal de Comando e execute o seguinte: npm install mongodb . Agora você baixou e instalou um driver de banco de dados mongodb. Node.js pode usar este módulo para manipular bancos de dados MongoDB: var mongo = require('mongodb');
+
+    4.2- Criar Banco de Dados MongoDB: 
+        4.2.1- Criando um banco de dados: Para criar um banco de dados no MongoDB, comece criando um objeto MongoClient e especifique uma URL de conexão com o endereço IP correto e o nome do banco de dados que deseja criar. O MongoDB criará o banco de dados se ele não existir e fará uma conexão com ele.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/mydb";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  console.log("Banco de Dados Criado!");  db.close();  });  >>Explicando: Crie um banco de dados chamado "mydb"
+
+    4.3- Criar uma Coleção MongoDB: 
+        4.3.1- Criando uma coleção: Uma coleção no MongoDB é igual a uma tabela no MySQL. Para criar uma coleção no MongoDB, use o método createCollection().   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  dbo.createCollection("clientes", function(err, res) {  if (err) throw err;  console.log("Coleção Criada!");  db.close();  });  });  >>Explicando: Crie uma coleção chamada "clientes"
+
+    4.4- Inserção do MongoDB:
+        4.4.1- Inserir na coleção: Para inserir um registro, ou documento, em uma coleção, utilizamos o método insertOne(). O primeiro parâmetro do método insertOne() é um objeto contendo o(s) nome(s) e valor(es) de cada campo do documento que se deseja inserir.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  var myobj = { nome: "Ricardo", endereço: "Av. Nova América, 124" };  dbo.collection("clientes").insertOne(myobj, function(err, res) {  if (err) throw err;  console.log("1 documento inserido");  db.close();  });  });  >>Explicando: Insira um documento na coleção "clientes"
+
+        4.4.2- Inserir vários documentos: Para inserir vários documentos em uma coleção no MongoDB, usamos o método insertMany(). O primeiro parâmetro do método insertMany() é um array de objetos, contendo os dados que você deseja inserir.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  var myobj = [ { nome: 'João', endereço: 'Rua do Centro, 71'},  { nome: 'Peter', endereço: 'Rua Cristal, 4'},  { nome: 'Michael', endereço: 'Rua das Pedras, 34'},  { nome: 'Richard', endereço: 'Rua da Esperança, 31'},  { nome: 'William', endereço: 'Rua das Flores, 54'},  ];  dbo.collection("clientes").insertMany(myobj, function(err, res) {  if (err) throw err;  console.log("Número de documentos inseridos: " + res.insertedCount);  db.close();  });  });
+
+    4.5- Localizar MongoDB: No MongoDB, usamos os métodos find e findOne para encontrar dados em uma coleção.
+        4.5.1- Find One: Para selecionar dados de uma coleção no MongoDB, podemos usar o método findOne(). O método findOne() retorna a primeira ocorrência na seleção. O primeiro parâmetro do método findOne() é um objeto de consulta.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  dbo.collection("clientes").findOne({}, function(err, result) {  if (err) throw err;  console.log(result.nome);  db.close();  });  });  >>Explicando: Encontra o primeiro documento na coleção de clientes  >>Resultado: Ricardo
+
+        4.5.2- Find All: Para selecionar dados de uma tabela no MongoDB, também podemos usar o método find(). O método find() retorna todas as ocorrências na seleção. O primeiro parâmetro do método find() é um objeto de consulta.   EX: MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  dbo.collection("clientes").find({}).toArray(function(err, result) {  if (err) throw err;  console.log(result);  db.close();  });  });  >>Explicando: Encontra todos os documentos na coleção de clientes
+
+    4.6- Consulta MongoDB:
+        4.6.1- Filtre o resultado: Ao localizar documentos em uma coleção, você pode filtrar o resultado usando um objeto de consulta. O primeiro argumento do método find() é um objeto de consulta e é usado para limitar a pesquisa.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  var query = { endereço: "Rua das Pedras, 34" };  dbo.collection("clientes").find(query).toArray(function(err, result) {  if (err) throw err;  console.log(result);  db.close();  });  });  >>Explicando: Encontre documentos com o endereço "Rua das Pedras, 34"
+
+        4.6.2- Filtrar com Expressões Regulares: Você pode escrever expressões regulares para encontrar exatamente o que está procurando. Para encontrar apenas os documentos onde o campo "endereço" começa com a letra "R", use a expressão regular /^R/.   EX: MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  var query = { endereço: /^R/ };  dbo.collection("clientes").find(query).toArray(function(err, result) {  if (err) throw err;  console.log(result);  db.close();  });  });  >>Explicando: Encontre documentos onde o endereço começa com a letra "R"
+
+    4.7- Classificação do MongoDB: 
+        4.7.1- Ordenar o resultado: Use o método sort() para classificar o resultado em ordem crescente ou decrescente. O método sort() usa um parâmetro, um objeto que define a ordem de classificação.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  var mysort = { nome: 1 };  dbo.collection("clientes").find().sort(mysort).toArray(function(err, result) {  if (err) throw err;  console.log(result);  db.close();  });  });   >>Explicando: Classifique o resultado em ordem alfabética por nome
+
+        4.7.2- Ordenar Descendente: Use o valor -1 no objeto de classificação para classificar de forma descendente.   EX: MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  var mysort = { nome: -1 };  dbo.collection("clientes").find().sort(mysort).toArray(function(err, result) {  if (err) throw err;  console.log(result);  db.close();  });  });
+
+    4.8- Excluir MongoDB:
+        4.8.1- Excluir documento: Para deletar um registro ou documento, utilizamos o método deleteOne(). O primeiro parâmetro do método deleteOne() é um objeto de consulta que define qual documento excluir.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  var myquery = { endereço: 'Rua da Esperança, 31' };  dbo.collection("clientes").deleteOne(myquery, function(err, obj) {  if (err) throw err;  console.log("1 documento excluído");  db.close();  });  });  >>Explicando: Exclua o documento com o endereço "Rua da Esperança, 31"
+
+        4.8.2- Excluir muitos: Para excluir mais de um documento, use o método deleteMany(). O primeiro parâmetro do método deleteMany() é um objeto de consulta que define quais documentos excluir.   EX: MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  var myquery = { endereço: /^R/ };  dbo.collection("clientes").deleteMany(myquery, function(err, obj) {  if (err) throw err;  console.log(obj.result.n + " documentos excluídos");  db.close();  });  });  >>Explicando: Exclua todos os documentos cujo endereço comece com a letra "R":
+
+    4.9- Coleção Drop do MongoDB:
+        4.9.1- Drop Collection: Você pode excluir uma tabela ou coleção conforme ela é chamada no MongoDB, usando o método drop(). O método drop() recebe uma função de retorno de chamada contendo o objeto de erro e o parâmetro de resultado que retorna true se a coleção foi descartada com sucesso, caso contrário, retorna false.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  dbo.collection("clientes").drop(function(err, delOK) {  if (err) throw err;  if (delOK) console.log("Coleção excluída");  db.close();  });  });  >>Explicando: Exclua a tabela "clientes"
+
+    4.10- Atualização MongoDB:
+        4.10.1- Atualizar documento: Você pode atualizar um registro ou documento como é chamado no MongoDB, usando o método updateOne(). O primeiro parâmetro do método updateOne() é um objeto de consulta que define qual documento atualizar. O segundo parâmetro é um objeto que define os novos valores do documento.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://127.0.0.1:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  var myquery = { endereço: "Rua da Esperança, 31" };  var newvalues = { $set: {nome: "Matheus", endereço: "Rua do Bambu, 57" } };  dbo.collection("clientes").updateOne(myquery, newvalues, function(err, res) {  if (err) throw err;  console.log("1 documento atualizado");  db.close();  });  });  >>Explicando: Atualize o documento com o endereço "Rua dda Esperança, 31" para nome="Matheus" e endereço="Rua do Bambu, 57"
+
+    4.11- Limite do MongoDB:
+        4.11.1- Limite o resultado: Para limitar o resultado no MongoDB, usamos o método limit(). O método limit() recebe um parâmetro, um número que define quantos documentos serão retornados.   EX: var MongoClient = require('mongodb').MongoClient;  var url = "mongodb://localhost:27017/";  MongoClient.connect(url, function(err, db) {  if (err) throw err;  var dbo = db.db("mydb");  dbo.collection("clientes").find().limit(5).toArray(function(err, result) {  if (err) throw err;  console.log(result);  db.close();  });  });  >>Explicando: Limite o resultado para retornar apenas 5 documentos

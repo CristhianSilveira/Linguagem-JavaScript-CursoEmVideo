@@ -1,0 +1,191 @@
+                    ------ Angular Completo ------
+
+
+        Olá, criei esse arquivo com as principais aplicações do Angular explicadas e com exemplos.
+
+                OBS: os exemplos não estão formatados para não ocupar muitas linhas do arquivo.
+
+
+1- Introdução: AngularJS estende HTML com novos atributos, é baseado em componentes e aplicada em empresas de grande porte. AngularJS é perfeito para aplicativos de página única (SPAs). Para criar um projeto execute o seguinte código no terminal: ng new (nome do projeto)   EX: ng new curso-angular, após criar digite: ng serve para gerar uma página no navegador.
+    1.1- AngularJS é um framework JavaScript: AngularJS é distribuído como um arquivo JavaScript e pode ser adicionado a uma página da Web com uma tag de script.   EX: <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    1.2- AngularJS Estende HTML: AngularJS estende HTML com ng-directives. A diretiva ng-app define um aplicativo AngularJS. A diretiva ng-model liga o valor dos controles HTML (input, select, textarea) aos dados do aplicativo. A diretiva ng-bind liga os dados do aplicativo à visualização HTML.
+
+    1.3- Estrutura das pastas:
+        1.3.1- node_modules: armazena as dependências do angular.
+        1.3.2- src: Onde mais trabalhamos, programamos a aplicação.
+        1.3.3- src/app: pasta principal para componentes e serviços.
+        1.3.4- src/assets: pasta para colocar imagens do trabalho.
+
+    1.4- Componentes: 
+        1.4.1- Criar pasta do componente: Abrir o terminal e digitar: ng generate component [nome da pasta].   EX: ng generate component components/first-component.
+
+        1.4.2- Acessar o componente no HTML global: Usar app-[nome da pasta do componente].   EX: <app-first-component>
+
+2- Ferramentas Angular:
+    2.1- Expressões Angular: AngularJS vincula dados a HTML usando Expressões. As expressões AngularJS podem ser escritas entre colchetes duplos: {{ expression }}. As expressões AngularJS também podem ser escritas dentro de uma diretiva: .ng-bind="expression".   EX:   <html>  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  <body>  <div ng-app="">  <p>My first expression: {{ 5 + 5 }}</p>  </div>  </body>  </html>
+
+        2.1.1- Números AngularJS: Os números AngularJS são como números JavaScript.   EX: <div ng-app="" ng-init="quantidade=1;custo=5">  <p>Total em Reais: {{ quantidade * custo }}</p>  </div>  >>Resultado: Total em Reais: 5
+
+        2.1.2- Strings AngularJS: Strings AngularJS são como strings JavaScript.   EX: <div ng-app="" ng-init="Nome='João';Sobrenome='Gomes'">  <p>Seu nome é: {{ Nome + " " + Sobrenome }}</p>  </div>  >>Resultado: Seu nome é: João Gomes
+
+        2.1.3- Objetos AngularJS: Objetos AngularJS são como objetos JavaScript.   EX: <div ng-app="" ng-init="pessoa={Nome:'João',Sobrenome:'Gomes'}">  <p>O Sobrenome é {{ pessoa.Sobrenome }}</p>  </div>  >>Resultado: O Sobrenome é Gomes
+
+        2.1.4- AngularJS Arrays: Arrays AngularJS são como arrays JavaScript:   EX: <div ng-app="" ng-init="pontos=[1,15,19,2,40]">   <p>O Terceiro resultado é {{ pontos[2] }}</p>  </div>   >>Resultado: O terceiro resultado é 19
+
+        2.1.5- Expressões AngularJS vs Expressões JavaScript: Assim como as expressões JavaScript, as expressões AngularJS podem conter literais, operadores e variáveis. Ao contrário das expressões JavaScript, as expressões AngularJS podem ser escritas dentro do HTML. As expressões AngularJS não suportam condicionais, loops e exceções, enquanto as expressões JavaScript suportam. As expressões AngularJS suportam filtros, enquanto as expressões JavaScript não.
+
+    2.2- Módulos: O módulo é um contêiner para as diferentes partes de um aplicativo. O módulo é um contêiner para os controladores de aplicativo. Os controladores sempre pertencem a um módulo.
+
+        2.2.1- Criando um Módulo: Um módulo é criado usando a função angular.module.   EX: <div ng-app="MeuApp">...</div>  <script>  var app = angular.module("MeuApp", []);  </script>
+
+        2.2.2- Adicionando um controlador: Adicione um controlador ao seu aplicativo e consulte o controlador com a diretiva ng-controller.   EX: <div ng-app="MeuApp" ng-controller="MeuCtrl">  {{ Nome + " " + Sobrenome }}  </div>  <script>  var app = angular.module("MeuApp", []);  app.controller("MeuCtrl", function($scope) {  $scope.Nome = "João";  $scope.Sobrenome = "Gomes";  });  </script>  >>Resultado: João Gomes
+
+        2.2.3- Adicionando uma diretiva: AngularJS possui um conjunto de diretivas internas que você pode usar para adicionar funcionalidade ao seu aplicativo.   EX: <div ng-app="MeuApp" w3-test-directive></div>  <script>  var app = angular.module("MeuApp", []);  app.directive("w3TestDirective", function() {  return {  template : "Eu fui feito em um construtor de diretivas!"  };  });  </script>  >>Resultado: Eu fui feito em um construtor de diretivas!
+
+    2.3- Diretivas: As diretivas AngularJS são atributos HTML estendidos com o prefixo ng-. A diretiva ng-app  inicializa um aplicativo AngularJS. A diretiva ng-init inicializa os dados do aplicativo. A diretiva ng-model vincula o valor dos controles HTML (input, select, textarea) aos dados do aplicativo.   EX: <div ng-app="" ng-init="Nome='João'">  <p>Nome: <input type="text" ng-model="Nome"></p>  <p>Você Escreveu: {{ Nome }}</p>  </div>  >>Resultado: Você Escreveu: João
+
+        2.3.1- Repetindo Elementos HTML: A diretiva ng-repeat repete um elemento HTML.   EX: <div ng-app="" ng-init="nomes=['Jessica','Marcos','Natan']">  <ul>  <li ng-repeat="x in nomes">  {{ x }}  </li>  </ul>  </div>
+
+        2.3.2- A diretiva ng-app: A diretiva ng-app define o elemento raiz de um aplicativo AngularJS. A diretiva ng-app inicializará automaticamente o aplicativo quando uma página da Web for carregada.
+
+        2.3.3- A diretiva ng-init: A diretiva ng-init define valores iniciais para um aplicativo AngularJS. Normalmente, você não usará ng-init. Em vez disso, você usará um controlador ou módulo.
+
+        2.3.4- A Diretiva ng-model: A diretiva ng-model vincula o valor dos controles HTML (input, select, textarea) aos dados do aplicativo. 
+        
+    2.4- Diretiva ng-model: Com a diretiva ng-model, você pode vincular o valor de um campo de entrada a uma variável criada no AngularJS.   EX: <div ng-app="myApp" ng-controller="myCtrl">  Nome: <input ng-model="name">  </div>  <script>  var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope) {  $scope.name = "João Gomes";  });  </script>
+
+        2.4.1- Encadernação de duas vias: A ligação vai nos dois sentidos. Se o usuário alterar o valor dentro do campo de entrada, a propriedade AngularJS também alterará seu valor.   EX: <div ng-app="myApp" ng-controller="myCtrl">  Nome: <input ng-model="name">  <h1>Você Digitou: {{name}}</h1>  </div>
+
+        2.4.2- Validar entrada do usuário: A diretiva ng-model pode fornecer validação de tipo para dados do aplicativo (número, e-mail, obrigatório).   EX: <form ng-app="" name="myForm">  Email:  <input type="email" name="myAddress" ng-model="text">  <span ng-show="myForm.myAddress.$error.email">Não é um endereço de e-mail válido</span>  </form>
+
+        2.4.3- Status do aplicativo: A diretiva ng-model pode fornecer status para dados do aplicativo (válido, dirty, touched, erro).   EX: <form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">  Email:  <input type="email" name="myAddress" ng-model="myText" required>  <h1>Status</h1>  {{myForm.myAddress.$valid}}  {{myForm.myAddress.$dirty}}  {{myForm.myAddress.$touched}}  </form>
+
+    2.5- Data Binding: A vinculação de dados no AngularJS é a sincronização entre o modelo e a exibição.
+        
+        2.5.1- Visualização HTML: O container HTML onde o aplicativo AngularJS é exibido é chamado de view. A exibição tem acesso ao modelo e há várias maneiras de exibir os dados do modelo na exibição. Você pode usar a diretiva ng-bind, que vinculará o innerHTML do elemento à propriedade de modelo especificada.   EX: <p ng-bind="Nome"></p>
+
+    2.6- Controladores: Os controladores AngularJS controlam os dados dos aplicativos AngularJS. Os controladores AngularJS são objetos JavaScript regulares. A diretiva ng-controller define o controlador de aplicativo.   EX: <div ng-app="myApp" ng-controller="myCtrl">  Nome: <input type="text" ng-model="Nome"><br>  Sobrenome: <input type="text" ng-model="Sobrenome"><br>  <br>  Nome Completo: {{Nome + " " + Sobrenome}}  </div>  <script>  var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope) {  $scope.Nome = "João";  $scope.Sobrenome = "Gomes";  });  </script>
+
+    2.7- Scopes: O escopo é a parte de ligação entre o HTML (visualização) e o JavaScript (controlador).O escopo é um objeto com as propriedades e métodos disponíveis. O escopo está disponível para a exibição e o controlador.
+        2.7.1- Como usar o escopo?: Quando você faz um controller no AngularJS, você passa o objeto $scope como um argumento.   EX: <div ng-app="myApp" ng-controller="myCtrl">  <h1>{{NomeCarro}}</h1>  </div>  <script>  var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope) {  $scope.NomeCarro = "Volvo";  });  </script>
+
+        2.7.2- Escopo Raiz: Todos os aplicativos possuem um $rootScope que é o escopo criado no elemento HTML que contém a diretiva ng-app. O rootScope está disponível em todo o aplicativo. Se uma variável tiver o mesmo nome no escopo atual e no rootScope, o aplicativo usará aquele no escopo atual.   EX: <body ng-app="myApp">  <p>A cor favorita do rootScope:</p>  <h1>{{cor}}</h1>  <div ng-controller="myCtrl">  <p>O escopo da cor favorita do controlador:</p>  <h1>{{cor}}</h1>  </div>  <p>A cor favorita do rootScope ainda é:</p>  <h1>{{cor}}</h1>  <script>  var app = angular.module('myApp', []);  app.run(function($rootScope) {  $rootScope.cor = 'Azul';  });  app.controller('myCtrl', function($scope) {  $scope.color = "Vermelho";  });  </script>  </body>  >>Resultado: A cor favorita do rootScope: azul  O escopo da cor favorita do controlador: vermelho  A cor favorita do rootScope ainda é: azul
+
+    2.8- Filters/ Pipe Operators: Filtros podem ser adicionados em AngularJS para formatar dados. AngularJS fornece filtros para transformar dados: currency [Formata um número para um formato de moeda], dateFormate [Uma data para um formato especificado], filter [Selecione um subconjunto de itens de uma matriz], json [Formata um objeto para uma string JSON], limitTo [Limita uma matriz/string em um número especificado de elementos/caracteres], lowercase [Formata uma string para letras minúsculas.], number [Formata um número para uma string], orderBy [Ordena uma matriz por uma expressão] e uppercase [Formata uma string para letras maiúsculas]
+
+        2.8.1- Adicionando Filtros a Expressões: Os filtros podem ser adicionados às expressões usando a barra vertical |, seguida por um filtro.
+
+        2.8.2- Uppercase: As strings uppercase formata um filtro para maiúsculas.   EX: <div ng-app="myApp" ng-controller="pessoaCtrl">  <p>O nome é {{ Nome | uppercase }}</p>  </div>
+
+        2.8.3- Lowercase: As strings lowercase formata um filtro para minúsculas.   EX: <div ng-app="myApp" ng-controller="pessoaCtrl">  <p>O nome é {{ Nome | lowercase }}</p>  </div>
+
+        2.8.4- Adicionando Filtros a Diretivas: Os filtros são adicionados às diretivas, com ng-repeat, usando o caractere |, seguido por um filtro.   EX: <div ng-app="myApp" ng-controller="nomesCtrl">  <ul>  <li ng-repeat="x in nomes | orderBy:'cidade'">  {{ x.nome + ', ' + x.cidade }}  </li>  </ul>  </div>  OBS: O filtro orderBy classifica uma matriz em ordem alfabética.
+
+        2.8.5- O filtro de moeda: O filtro currency formata um número como moeda.   EX: <div ng-app="myApp" ng-controller="costCtrl">  <h1>Preço: {{ preco | currency }}</h1>  </div>  <script>  var app = angular.module('myApp', []);  app.controller('costCtrl', function($scope) {  $scope.preco = 58;  });  </script>
+
+        2.8.6- O Filtro Filter: O filtro filter seleciona um subconjunto de uma matriz. O filtro filter só pode ser usado em arrays e retorna um array contendo apenas os itens correspondentes.   EX: <div ng-app="myApp" ng-controller="nomesCtrl">  <ul>  <li ng-repeat="x in nomes | filter : 'i'">  {{ x }}  </li>  </ul>  </div>  <script>  angular.module('myApp', []).controller('nomesCtrl', function($scope) {  $scope.nomes = [ 'Jamile','Carlos','Margarete', 'Helton', 'João','Gustavo','Bianca','Marlene','Caio' ];  });  </script>  OBS: Só seleciona nomes com a letra i  >>Resultado: Jamile, Bianca, Caio
+
+    2.9- Services: No AngularJS você pode criar seu próprio serviço ou usar um dos muitos serviços integrados.
+        2.9.1- O que é um Serviço? No AngularJS, um serviço é uma função ou objeto que está disponível e limitado ao seu aplicativo AngularJS. AngularJS tem cerca de 30 serviços integrados. 
+        
+        2.9.2- Serviço Location: O serviço $location possui métodos que retornam informações sobre a localização da página da web atual.   EX: var app = angular.module('myApp', []);  app.controller('customersCtrl', function($scope, $location) {  $scope.myUrl = $location.absUrl();  });
+
+        2.9.3- O serviço $http: O serviço $http é um dos serviços mais usados ​​em aplicações AngularJS. O serviço faz uma solicitação ao servidor e permite que seu aplicativo lide com a resposta.  EX: var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope, $http) {  $http.get("welcome.htm").then(function (response) {  $scope.myWelcome = response.data;  });  });
+
+        2.9.4- O serviço $timeout: O serviço $timeout é a versão do AngularJS da função window.setTimeout.   EX: var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope, $timeout) {  $scope.myHeader = "Olá Mundo!";  $timeout(function () {  $scope.myHeader = "Como você está hoje?";  }, 2000);  });  >>Resultado: Exibir uma nova mensagem após dois segundos. De: Olá Mundo! para Como você está hoje?
+
+        2.9.5- O serviço $interval: O serviço $interval é a versão do AngularJS da função window.setInterval.   EX: var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope, $interval) {  $scope.theTime = new Date().toLocaleTimeString();  $interval(function () {  $scope.theTime = new Date().toLocaleTimeString();  }, 1000);  });  >>Resultado: Exibir a hora a cada segundo:
+
+    2.10- HTTP: $http é um serviço AngularJS para leitura de dados de servidores remotos.
+        
+        2.10.1- AngularJS $http: O serviço AngularJS $http faz uma solicitação ao servidor e retorna uma resposta.
+
+        2.10.2- Métodos: O método .get é um método de atalho do serviço $http. Existem vários métodos de atalho: .delete(), .get(), .head(), .jsonp(), .patch(), .post() e .put().   EX: var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope, $http) {  $http({  method : "GET",  url : "welcome.htm"  }).then(function mySuccess(response) {  $scope.myWelcome = response.data;  }, function myError(response) {  $scope.myWelcome = response.statusText;  });  });
+
+        2.10.3- Propriedades: A resposta do servidor é um objeto com estas propriedades: .config o objeto usado para gerar a solicitação, .data uma string, ou um objeto, carregando a resposta do servidor, .headers uma função a ser usada para obter informações de cabeçalho, .status um número que define o status HTTP, .statusText uma string definindo o status HTTP.   EX: var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope, $http) {  $http.get("welcome.htm")  .then(function(response) {   $scope.content = response.data;  $scope.statuscode = response.status;  $scope.statustext = response.statusText;  });  });
+
+        2.10.4- JSON: Espera-se que os dados obtidos da resposta estejam no formato JSON. JSON é uma ótima maneira de transportar dados e é fácil de usar no AngularJS ou em qualquer outro JavaScript.
+
+    2.11- Tabelas: A diretiva ng-repeat é perfeita para exibir tabelas.
+
+        2.11.1- Exibindo dados em uma tabela: Exibir tabelas com angular é muito simples.   EX: <div ng-app="myApp" ng-controller="customersCtrl">  <table>  <tr ng-repeat="x in nomes">  <td>{{ x.Nome }}</td>  <td>{{ x.Cidade }}</td>  </tr>  </table>  </div>  <script>  var app = angular.module('myApp', []);  app.controller('customersCtrl', function($scope, $http) {  $http.get("customers.php")  .then(function (response) {$scope.nomes = response.data.records;});  });  </script>
+
+        2.11.2- Colocar Estilo: Para torná-lo agradável, adicione um pouco de CSS à página.
+
+        2.11.3- Exibição com filtro orderBy: Para classificar a tabela, adicione um filtro  orderBy.  EX: <table>  <tr ng-repeat="x in nomes | orderBy : 'Cidade'">  <td>{{ x.Nome }}</td>  <td>{{ x.Cidade }}</td>  </tr>  </table>
+
+        2.11.4- Exibir o índice da tabela: Para exibir o índice da tabela, adicione um <td> com $index.   EX: <table>  <tr ng-repeat="x in nomes">  <td>{{ $index + 1 }}</td>  <td>{{ x.Nome }}</td>  <td>{{ x.Cidade }}</td>  </tr>  </table>
+
+        2.11.5- Usando $ par e $ ímpar:   EX:<table>  <tr ng-repeat="x in nomes">  <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Nome }}</td>  <td ng-if="$even">{{ x.Nome }}</td>  <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Cidade }}</td>  <td ng-if="$even">{{ x.Cidade }}</td>  </tr>  </table>
+
+    2.12- Select: AngularJS permite criar listas suspensas com base em itens em uma matriz ou um objeto.
+
+        2.12.1- Criando uma caixa de seleção usando ng-options: Se você deseja criar uma lista suspensa, baseada em um objeto ou array no AngularJS, você deve usar a diretiva ng-options.   EX: <div ng-app="myApp" ng-controller="myCtrl">  <select ng-model="selecionaNome" ng-options="x for x in nomes">  </select>  </div>  <script>  var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope) {  $scope.nomes = ["Eduardo", "Tobias", "Leandro"];  });  </script>
+
+3- Outras Ferramentas Angular:    
+    3.1- DOM: AngularJS tem diretivas para ligar os dados do aplicativo aos atributos dos elementos HTML DOM.
+        3.1.1- A Diretiva ng-disabled: A diretiva ng-disabled liga os dados do aplicativo AngularJS ao atributo disabled dos elementos HTML.   EX: <div ng-app="" ng-init="mySwitch=true">  <p>  <button ng-disabled="mySwitch">Click Me!</button>  </p>  <p>  <input type="checkbox" ng-model="mySwitch">Button  </p>  <p>  {{ mySwitch }}  </p>  </div>
+
+        3.1.2- A diretiva ng-show: A diretiva ng-show mostra ou oculta um elemento HTML. A diretiva ng-show mostra (ou oculta) um elemento HTML com base no valor de ng-show.   EX: <div ng-app="">  <p ng-show="true">Eu estou visível.</p>  <p ng-show="false">Eu não estou visível.</p>  </div>
+
+        3.1.3- A diretiva ng-hide: A diretiva ng-hide oculta ou mostra um elemento HTML.   EX: <div ng-app="">  <p ng-hide="true">Eu não estou visível.</p>  <p ng-hide="false">Eu estou visível.</p>  </div>
+
+    3.2- Eventos: AngularJS tem suas próprias diretivas de eventos HTML: ng-blur, ng-change, ng-click, ng-copy, ng-cut, ng-dblclick, ng-focus, ng-keydown, ng-keypress, ng-keyup, ng-mousedown, ng-mouseenter, ng-mouseleave, ng-mousemove, ng-mouseover, ng-mouseup e ng-paste.
+
+        3.2.1- Eventos do mouse: Os eventos do mouse ocorrem quando o cursor se move sobre um elemento, nesta ordem: ng-mouseover, ng-mouseenter, ng-mousemove e ng-mouseleave. Ou quando um botão do mouse é clicado em um elemento, nesta ordem: ng-mousedown, ng-mouseup e ng-click.
+
+    3.3- Formulários: Os formulários no AngularJS fornecem vinculação de dados e validação de controles de entrada.
+        3.3.1- Controles de entrada: Os controles de entrada são os elementos de entrada HTML: elemento input, elemento select, elemento button, elemento textarea.
+
+        3.3.2- Ligação de dados: Os controles de entrada fornecem vinculação de dados usando a diretiva ng-model.   EX: <form>  Nome: <input type="text" ng-model="Nome">  </form>
+
+        3.3.3- Checkbox: Uma caixa de marcação tem o valor true ou false. Aplique a diretiva ng-model a uma caixa de marcação e use seu valor em seu aplicativo.   EX:  <form>  Marque para mostrar a mensagem:  <input type="checkbox" ng-model="myVar">  </form>  <h1 ng-show="myVar">Minha mensagem</h1>
+
+        3.3.4- Botões do rádio: Vincule os botões de opção ao seu aplicativo com a diretiva ng-model.   EX: <form>  Escolha um tópico:  <input type="radio" ng-model="myVar" value="cachorros">Cachorros  <input type="radio" ng-model="myVar" value="Tuto">Tutoriais  <input type="radio" ng-model="myVar" value="carros">Carros  </form>  <div ng-switch="myVar">  <div ng-switch-when="cachorros">  <h1>Cachorros</h1>  <p>Bem-vindo ao mundo dos cachorros.</p>  </div>  <div ng-switch-when="Tuto">  <h1>Tutoriais</h1>  <p>Aprenda com exemplos.</p>  </div>
+
+        3.3.5- Caixa de seleção: Vincule as caixas de seleção ao seu aplicativo com a diretiva ng-model.   EX: <form>  Selecione um tópico:  <select ng-model="myVar">  <option value="">  <option value="cachorro">Cachorros  <option value="tuto">Tutoriais  <option value="carros">Carros  </select></form>
+
+    3.4- Validação de formulários: AngularJS oferece validação de formulário do lado do cliente. AngularJS monitora o estado do formulário e dos campos de entrada (input, textarea, select) e permite que você notifique o usuário sobre o estado atual.
+
+        3.4.1- Obrigatório: Use o atributo HTML5 required para especificar que o campo de entrada deve ser preenchido.   EX: <form name="myForm">  <input name="myInput" ng-model="myInput" required>  </form>  <p>O estado válido da entrada é:</p>  <h1>{{myForm.myInput.$valid}}</h1>
+
+        3.4.2- E-mail: Use o tipo HTML5 email para especificar que o valor deve ser um e-mail.   EX: <form name="myForm">  <input name="myInput" ng-model="myInput" type="email">  </form>  <p>O estado válido da entrada é:</p>  <h1>{{myForm.myInput.$valid}}</h1>
+
+        3.4.3- Estado do formulário e estado de entrada: AngularJS está constantemente atualizando o estado do formulário e dos campos de entrada. Os campos de entrada têm os seguintes estados: $untouched [O campo ainda não foi tocado], $touched [O campo foi tocado], $pristine [O campo ainda não foi modificado], $dirty [O campo foi modificado], $invalid [O conteúdo do campo não é válido], $valid [O conteúdo do campo é válido]. Os formulários têm os seguintes estados: $pristine [Nenhum campo foi modificado ainda], $dirty [Um ou mais foram modificados], $invalid [O conteúdo do formulário não é válido], $valid [O conteúdo do formulário é válido], $submitted [O formulário é enviado]. Eles são todos propriedades do campo de entrada e são true ou false.
+
+        3.4.4- Classes CSS: AngularJS adiciona classes CSS a formulários e campos de entrada, dependendo de seus estados. As seguintes classes são adicionadas ou removidas dos campos de entrada: ng-untouched [O campo ainda não foi tocado], ng-touched [O campo foi tocado], ng-pristine [O campo ainda não foi modificado], ng-dirty [O campo foi modificado], ng-valid [O conteúdo do campo é válido], ng-invalid [O conteúdo do campo não é válido], ng-valid-key [Uma chave para cada validação]. As seguintes classes são adicionadas ou removidas dos formulários: ng-pristine [Nenhum campo ainda não foi modificado], ng-dirty [Um ou mais campos foram modificados], ng-valid [O conteúdo do formulário é válido], ng-invalid [O conteúdo do formulário não é válido], ng-valid-key [Uma chave para cada validação]. As classes são removidas se o valor que elas representam for false.   EX: <style>  input.ng-invalid {  background-color: pink;  }  input.ng-valid {  background-color: lightgreen;  }  </style>
+
+    3.5- API: API significa Interface de Programação de Aplicativos. A API global do AngularJS é um conjunto de funções JavaScript globais para executar tarefas comuns como: Comparando objetos, Iterando objetos e Convertendo dados. A seguir está uma lista de algumas funções API comuns: angular.lowercase(), angular.uppercase(), angular.isString()	e angular.isNumber().
+
+        3.5.1- angular.lowercase: Converte uma string para letras minúsculas.   EX: <div ng-app="myApp" ng-controller="myCtrl">  <p>{{ x1 }}</p>  <p>{{ x2 }}</p>  </div>  <script>  var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope) {  $scope.x1 = "JOÃO";  $scope.x2 = angular.lowercase($scope.x1);  });  </script>  >>Resultado: João
+
+        3.5.2- angular.uppercase: Converte uma string para letras maiúsculas.   EX: <div ng-app="myApp" ng-controller="myCtrl">  <p>{{ x1 }}</p>  <p>{{ x2 }}</p>  </div>  <script>  var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope) {  $scope.x1 = "João";  $scope.x2 = angular.uppercase($scope.x1);  });  </script>  >>Resultado: JOÃO
+
+        3.5.3- angular.isString(): Retorna verdadeiro se a referência for uma string.   EX: <div ng-app="myApp" ng-controller="myCtrl">  <p>{{ x1 }}</p>  <p>{{ x2 }}</p>  </div>  <script>  var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope) {  $scope.x1 = "JOHN";  $scope.x2 = angular.isString($scope.x1);   });  </script>  >>Resultado: true
+
+        3.5.4- angular.isNumber(): 	Retorna verdadeiro se a referência for um número.   EX: <div ng-app="myApp" ng-controller="myCtrl">  <p>{{ x1 }}</p>  <p>{{ x2 }}</p>  </div>  <script>  var app = angular.module('myApp', []);  app.controller('myCtrl', function($scope) {  $scope.x1 = "JOHN";  $scope.x2 = angular.isNumber($scope.x1);  });  </script>  >>Resultado: false
+
+    3.6- Includes: Com AngularJS, você pode incluir conteúdo HTML usando a diretiva ng-include.   EX: <div ng-include="'myFile.htm'"></div>
+
+    3.7- Animações: AngularJS fornece transições animadas, com ajuda de CSS.
+
+        3.7.1- O que é uma Animação? Uma animação é quando a transformação de um elemento HTML dá a você uma ilusão de movimento.
+
+        3.7.2- O que eu preciso? Para deixar seus aplicativos prontos para animações, você deve incluir a biblioteca AngularJS Animate, Em seguida, você deve consultar o módulo ngAnimate em seu aplicativo.   EX: <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>    <body ng-app="ngAnimate">
+
+        3.7.3- O que o ngAnimate faz? O módulo ngAnimate adiciona e remove classes. O módulo ngAnimate não anima seus elementos HTML, mas quando ngAnimate percebe certos eventos, como ocultar ou mostrar um elemento HTML, o elemento recebe algumas classes pré-definidas que podem ser usadas para fazer animações. As diretivas no AngularJS que adicionam/removem classes são: ng-show, ng-hide, ng-class, ng-view, ng-include, ng-repeat, ng-if e ng-switch
+
+        3.7.4- Transições CSS: As transições CSS permitem que você altere os valores das propriedades CSS suavemente, de um valor para outro, durante um determinado período.   EX: <style>  div {  transition: all linear 0.5s;  background-color: lightblue;  height: 100px;  }  .ng-hide {  height: 0;  }  </style>  >>Explicando: Quando o elemento DIV obtiver a classe .ng-hide, a transição levará 0,5 segundos e a altura mudará suavemente de 100px para 0.
+
+        3.7.5- Animações CSS: As animações CSS permitem que você altere os valores das propriedades CSS suavemente, de um valor para outro, durante um determinado período.   EX: <style>  @keyframes myChange {  from {  height: 100px;  } to {  height: 0;  }  }  div {  height: 100px;  background-color: lightblue;  }  div.ng-hide {  animation: 0.5s myChange;  }  </style>  >>Explicando: Quando o elemento DIV pegar a classe .ng-hide, a myChange animação será executada, que mudará suavemente a altura de 100px para 0.
+
+    3.8- Roteamento: O módulo ngRoute ajuda seu aplicativo a se tornar um aplicativo de página única.
+
+        3.8.1- O que é roteamento no AngularJS? Se você deseja navegar para diferentes páginas em seu aplicativo, mas também deseja que o aplicativo seja um SPA (Single Page Application), sem recarga de página, você pode usar o módulo ngRoute. O módulo ngRoute roteia seu aplicativo para diferentes páginas sem recarregar todo o aplicativo.   EX: <body ng-app="myApp">  <p><a href="#/!">Main</a></p>  <a href="#!red">Red</a>  <a href="#!green">Green</a>  <a href="#!blue">Blue</a>  <div ng-view></div>  <script>  var app = angular.module("myApp", ["ngRoute"]);  app.config(function($routeProvider) {  $routeProvider  .when("/", {  templateUrl : "main.htm"  })  .when("/red", {  templateUrl : "red.htm"  })  .when("/green", {  templateUrl : "green.htm"  })  .when("/blue", {  templateUrl : "blue.htm"  });  });  </script>  </body>
+
+        3.8.2- O que eu preciso? Para deixar suas aplicações prontas para roteamento, você deve incluir o módulo AngularJS Route, Então você deve adicionar o ngRoute como uma dependência no módulo do aplicativo.   EX: <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>  var app = angular.module("myApp", ["ngRoute"]);
+
+        3.8.3- Onde isso vai? Sua aplicação precisa de um container para colocar o conteúdo fornecido pelo roteamento. Este contêiner é a diretiva ng-view.   EX: <div ng-view></div>
+
+        3.8.4- $routeProvider: Com o $routeProvider você pode definir qual página exibir quando um usuário clicar em um link.   EX: var app = angular.module("myApp", ["ngRoute"]);  app.config(function($routeProvider) {  $routeProvider  .when("/", {  templateUrl : "main.htm"  })  .when("/london", {  templateUrl : "london.htm"  })  .when("/paris", {  templateUrl : "paris.htm"  });  });
